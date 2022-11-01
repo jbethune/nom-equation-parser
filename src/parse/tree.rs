@@ -3,20 +3,11 @@ use crate::calculation::Calculation;
 
 pub fn combine_operands_and_operators(
     mut operands: Vec<Calculation>,
-    mut operators: Vec<Operator>,
+    operators: Vec<Operator>,
 ) -> Calculation {
     match operands.len() {
         0 => panic!("no operands"), // the parsing code above should have handled this
         1 => return operands.pop().expect("checked"),
-        2 => {
-            let rhs = operands.pop().expect("checked");
-            let lhs = operands.pop().expect("checked");
-            return Calculation::Unevaluated {
-                lhs: Box::new(lhs),
-                operator: operators.pop().expect("checked"),
-                rhs: Box::new(rhs),
-            };
-        }
         _ => {} // let's handle the non-triavial cases below
     }
 
