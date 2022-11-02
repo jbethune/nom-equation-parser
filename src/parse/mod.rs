@@ -79,7 +79,7 @@ pub fn parse_equation(input: &str) -> IResult<&str, Calculation> {
             rest = tail;
             break;
         }
-        // we have to look further right
+        // else: we have to look further right
 
         let (tail, operator) = parse_operator(tail)?;
         let (tail, _) = multispace0(tail)?;
@@ -87,8 +87,8 @@ pub fn parse_equation(input: &str) -> IResult<&str, Calculation> {
         rest = tail;
     }
 
-    // we have gathered all n operatorsand all n+1 operands on the same level
-    // parsing is over. Now we need to construct the equation tree
+    // we have gathered all n operatorsand and all n+1 operands on the same level.
+    // Parsing is over. Now we need to construct the equation tree
     assert_eq!(operands.len(), operators.len() + 1);
 
     let result = combine_operands_and_operators(operands, operators);
