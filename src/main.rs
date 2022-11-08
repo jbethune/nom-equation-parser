@@ -2,8 +2,8 @@ use std::{env::args, process::exit};
 
 use equation_parser::calculation::Calculation;
 
-const ANSI_RED_BOLD_ON: &'static str = "\u{1B}[38;5;9m\u{1B}[1m";
-const ANSI_OFF: &'static str = "\u{1B}[0m";
+const ANSI_RED_BOLD_ON: &str = "\u{1B}[38;5;9m\u{1B}[1m";
+const ANSI_OFF: &str = "\u{1B}[0m";
 
 fn main() {
     let argv: Vec<String> = args().collect();
@@ -25,7 +25,7 @@ fn main() {
 }
 
 fn eprintln_failed_expr(full_expr: &str, tail: &str) {
-    if tail.len() > 0 {
+    if !tail.is_empty() {
         eprintln!("Failed to parse full expression below:\n{}", full_expr);
         let good_len = full_expr.len() - tail.len();
         eprintln!(

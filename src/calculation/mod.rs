@@ -32,7 +32,7 @@ impl FromStr for Calculation {
 
     fn from_str(input: &str) -> Result<Self, Self::Err> {
         let (tail, result) = parse_equation(input)?;
-        if tail.len() > 0 {
+        if !tail.is_empty() {
             Err(Self::Err {
                 failed_tail: tail.to_string(),
             })
