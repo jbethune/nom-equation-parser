@@ -70,7 +70,7 @@ pub fn parse_equation(input: &str) -> IResult<&str, Calculation> {
         let (tail, _) = multispace0(tail)?;
 
         // two checks to see if we are at the end of the equation
-        if tail.len() == 0 || peek(&closing_paren)(tail).is_ok() {
+        if tail.is_empty() || peek(&closing_paren)(tail).is_ok() {
             rest = tail;
             break;
         }
