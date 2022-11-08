@@ -6,7 +6,7 @@ This project is part of the Rust Berlin Online Meetup.
 Things to practise during the meetup:
 
 * -[ ] fix the TODOs
-* -[ ] fix the clippy lints
+* -[X] fix the clippy lints
 
 How to run the software:
 
